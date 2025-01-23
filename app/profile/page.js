@@ -1,4 +1,4 @@
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { getKindeServerSession, LoginLink } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from 'next/navigation';
 
 export default async function ProfilePage() {
@@ -8,7 +8,12 @@ export default async function ProfilePage() {
 console.log(user)
   // If no user is found, redirect to the login page
   if (!user) {
-    redirect(process.env.NEXT_PUBLIC_LOGIN_REDIRECT);
+    return (
+     <div className="flex flex-col gap-4 min-h-screen items-center justify-center">
+      <h1 className="text-2xl text-teal-400  font-bold text-center" >You want to log first</h1>
+      <LoginLink  className="text-lg font-semibold hover:text-teal-400 transition-colors p-2 w-fit border-2 solid border-teal-400 rounded-md">
+     Login Now
+   </LoginLink></div>)
   }
 
   // Render the profile page if user is authenticated
