@@ -20,13 +20,11 @@ export default async function Header() {
             </span>
           </Link>
           <div className="flex space-x-6">
-            <Link href="/profile">
-              <span className="text-lg font-semibold hover:text-teal-400 transition-colors">
-                Profile
-              </span>
-            </Link>
             {!user ? (
               <>
+                <LoginLink className="text-lg font-semibold hover:text-teal-400 transition-colors">
+                  Profile
+                </LoginLink>
                 <LoginLink className="text-lg font-semibold hover:text-teal-400 transition-colors">
                   Sign in
                 </LoginLink>
@@ -35,9 +33,16 @@ export default async function Header() {
                 </RegisterLink>
               </>
             ) : (
-              <LogoutLink className="text-lg font-semibold hover:text-teal-400 transition-colors">
-                Logout
-              </LogoutLink>
+              <>
+                <Link href="/profile">
+                  <span className="text-lg font-semibold hover:text-teal-400 transition-colors">
+                    Profile
+                  </span>
+                </Link>
+                <LogoutLink className="text-lg font-semibold hover:text-teal-400 transition-colors">
+                  Logout
+                </LogoutLink>
+              </>
             )}
           </div>
         </nav>
